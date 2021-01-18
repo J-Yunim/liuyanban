@@ -6,7 +6,7 @@
 }
 
 .commentInput__field{
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   display: flex;
 }
 .commentInput__label{
@@ -43,4 +43,9 @@
 }
 .commentInput__button:active{
   background-color: #13c1f1;
+}
+
+.commentInput__alert{
+  margin-bottom: 10px;
+  font-size: 12px;
 }

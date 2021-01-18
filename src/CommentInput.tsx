@@ -1,32 +1,39 @@
 import React, {useState } from 'react';
 import './CommentInput.css'
 import store from './reducers';
+import { Alert } from 'antd';
 
 function CommentInput() {
 
-    const [username, setUsername] = useState('')
-    const [comment, setComment] = useState('')
+    const [username, setUsername] = useState('');
+    const [comment, setComment] = useState('');
+    const [userFlag, setUserFlag] = useState(false);
+    const [comFlag, setComFlag] = useState(false);
 
     const {dispatch} = store
-    let uname = false
-    let com = false
+
+    
     function handleSubmit(){
         
-        if(!username.trim()){
-            uname = true;
-            alert('请输入用户名');
+        const user = username.trim();
+        const com = comment.trim();
+
+        setUserFlag(false);
+        setComFlag(false)
+
+        if(!user){
+            setUserFlag(true);
             return;
         }
-        if(!comment.trim()){
-            com = true;
-            alert('请输入评论');
+        if(!com){
+            setComFlag(true);
             return;
         }
         dispatch.count.addComment({
-            user: username.trim(),
-            comment: comment.trim(),
+            user: user,
+            comment: com,
         })
-        setComment('')
+        setComment('');
     }
     
 
@@ -46,6 +53,8 @@ function CommentInput() {
                                             }}
                 />
             </div>
+            {userFlag && <Alert className='commentInput__alert' message="请输入用户名" type="error" />}
+            {comFlag && <Alert className='commentInput__alert' message="评论不能为空" type="error" />}
             <div className='commentInput__buttonContainer'>
                 <button className='commentInput__button' onClick={handleSubmit}>发布</button>
             </div>
