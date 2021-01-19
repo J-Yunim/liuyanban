@@ -1,0 +1,26 @@
+.ReplyInput{  
+    margin: 10px auto;
+    display: flex;
+    align-items: center;
+}
+.ReplyInput__text{
+    width: 370px;
+    height: 40px;
+    resize: none;
+    border-radius: 2px 0 0 2px;
+    border: 1px solid #e0e0e0;
+    padding: 3px;
+    font-size: 12px;
+}
+.ReplyInput__button{
+    cursor: pointer;
+    height: 40px;
+    width: 40px;
+    border-radius: 0 2px 2px 0;
+    border: none;
+    transition: 0.2s ease;
+}
+.ReplyInput__button:hover{
+    background-color: rgb(54, 102, 141);
+    color: white;
+}
